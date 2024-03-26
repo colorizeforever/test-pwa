@@ -40,7 +40,7 @@ export class AppComponent implements AfterViewInit {
   playDeviceFacingBack = (devices: any[]) => {
     // front camera or back camera check here!
     const device = devices.find((f) =>
-      /back|rear|environment/gi.test(f.label)
+        /back|Задняя|Задней|rear|environment/gi.test(f.label)
     ); // Default Back Facing Camera
     this.scanComponent.playDevice(device ? device.deviceId : devices[0].deviceId);
   };
