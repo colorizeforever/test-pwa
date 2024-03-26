@@ -34,7 +34,19 @@ export class AppComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.scanComponent.start();
+    this.scanComponent.start(this.playDeviceFacingBack)
+  }
+
+  playDeviceFacingBack = (devices: any[]) => {
+    // front camera or back camera check here!
+    const device = devices.find((f) =>
+      /back|rear|environment/gi.test(f.label)
+    ); // Default Back Facing Camera
+    this.scanComponent.playDevice(device ? device.deviceId : devices[0].deviceId);
+  };
+
+  ngOnDestroy() {
+
   }
 
 }
